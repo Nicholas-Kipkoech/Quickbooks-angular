@@ -1,0 +1,23 @@
+.component-links {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  text-decoration: none;
+  align-items: center;
+}
+a {
+  text-decoration: none;
+}
+.list li {
+  width: 200px;
+  height: 60px;
+  list-style: none;
+  text-decoration: none;
+  gap: 2px;
+}

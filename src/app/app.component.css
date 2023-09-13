@@ -1,0 +1,15 @@
+.components-body {
+  display: flex;
+  margin: 20;
+  padding: 20;
+  background-color: rgb(172, 207, 207);
+}
+.components {
+  flex: 2;
+  height: 100vh;
+  background: rgb(236, 236, 236);
+}
+.sidenav {
+  width: 200px;
+  height: 100vh;
+}
