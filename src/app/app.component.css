@@ -1,15 +1,13 @@
 .components-body {
   display: flex;
-  margin: 20;
-  padding: 20;
-  background-color: rgb(172, 207, 207);
+  height: 100vh;
 }
 .components {
-  flex: 2;
-  height: 100vh;
-  background: rgb(236, 236, 236);
+  flex-grow: 1;
+  padding: 20px;
+  overflow-y: auto;
 }
 .sidenav {
-  width: 200px;
-  height: 100vh;
+  width: 250px; /* Adjust the width as needed */
+  background-color: #f0f0f0;
 }

@@ -1,1 +1,72 @@
-<p>accounts works!</p>
+<div *ngIf="isLoading" class="loading-indicator">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  <p>Loading...</p>
+</div>
+<div *ngIf="!isLoading">
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" class="mat-table">
+      <!-- Column definitions -->
+      <ng-container matColumnDef="Name">
+        <th mat-header-cell *matHeaderCellDef>Name</th>
+        <td mat-cell *matCellDef="let account">{{ account.Name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="FullyQualifiedName">
+        <th mat-header-cell *matHeaderCellDef>Fully Qualified Name</th>
+        <td mat-cell *matCellDef="let account">
+          {{ account.FullyQualifiedName }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Active">
+        <th mat-header-cell *matHeaderCellDef>Active</th>
+        <td mat-cell *matCellDef="let account">
+          {{ account.Active ? "Yes" : "No" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="Classification">
+        <th mat-header-cell *matHeaderCellDef>Classification</th>
+        <td mat-cell *matCellDef="let account">{{ account.Classification }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="AccountType">
+        <th mat-header-cell *matHeaderCellDef>Account Type</th>
+        <td mat-cell *matCellDef="let account">{{ account.AccountType }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="AccountSubType">
+        <th mat-header-cell *matHeaderCellDef>Account Subtype</th>
+        <td mat-cell *matCellDef="let account">{{ account.AccountSubType }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="CurrentBalance">
+        <th mat-header-cell *matHeaderCellDef>Current Balance</th>
+        <td mat-cell *matCellDef="let account">
+          {{ account.CurrentBalance | currency : "USD" : "symbol" : "1.2-2" }}
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="CurrencyRef">
+        <th mat-header-cell *matHeaderCellDef>Currency</th>
+        <td mat-cell *matCellDef="let account">{{ account.CurrencyRef }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef>ID</th>
+        <td mat-cell *matCellDef="let account">{{ account.Id }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="MetaData">
+        <th mat-header-cell *matHeaderCellDef>Meta Data</th>
+        <td mat-cell *matCellDef="let account">
+          {{ account.MetaData.CreateTime }}
+        </td>
+      </ng-container>
+
+      <!-- Set up table rows -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  </div>
+</div>
