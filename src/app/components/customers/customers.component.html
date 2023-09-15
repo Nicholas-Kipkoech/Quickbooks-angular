@@ -1,0 +1,74 @@
+<div *ngIf="isLoading" class="loading-indicator">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  <p>Loading...</p>
+</div>
+<div *ngIf="!isLoading">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Column definitions -->
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.Id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="GivenName">
+      <th mat-header-cell *matHeaderCellDef>Given Name</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.GivenName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="FamilyName">
+      <th mat-header-cell *matHeaderCellDef>Family Name</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.FamilyName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Taxable">
+      <th mat-header-cell *matHeaderCellDef>Taxable</th>
+      <td mat-cell *matCellDef="let customer">{{ customer.Taxable }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="PrimaryPhone">
+      <th mat-header-cell *matHeaderCellDef>Primary Phone</th>
+      <td mat-cell *matCellDef="let customer">
+        {{ customer.PrimaryPhone?.FreeFormNumber }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="PrimaryEmailAddr">
+      <th mat-header-cell *matHeaderCellDef>Primary Email</th>
+      <td mat-cell *matCellDef="let customer">
+        {{ customer.PrimaryEmailAddr?.Address }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Balance">
+      <th mat-header-cell *matHeaderCellDef>Balance</th>
+      <td mat-cell *matCellDef="let customer">
+        {{ customer.Balance }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="BalanceWithJobs">
+      <th mat-header-cell *matHeaderCellDef>Balance With Jobs</th>
+      <td mat-cell *matCellDef="let customer">
+        {{ customer.BalanceWithJobs }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="PreferredDeliveryMethod">
+      <th mat-header-cell *matHeaderCellDef>Delivery Method</th>
+      <td mat-cell *matCellDef="let customer">
+        {{ customer.PreferredDeliveryMethod }}
+      </td>
+    </ng-container>
+    <ng-container matColumnDef="Active">
+      <th mat-header-cell *matHeaderCellDef>Active</th>
+      <td mat-cell *matCellDef="let customer">
+        {{ customer.Active }}
+      </td>
+    </ng-container>
+
+    <!-- Add more column definitions as needed -->
+
+    <!-- Set up table rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

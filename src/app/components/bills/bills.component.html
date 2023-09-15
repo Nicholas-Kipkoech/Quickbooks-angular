@@ -1,0 +1,64 @@
+<div *ngIf="isLoading" class="loading-indicator">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  <p>Loading...</p>
+</div>
+<div *ngIf="!isLoading">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Column definitions -->
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.Id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="DueDate">
+      <th mat-header-cell *matHeaderCellDef>Due Date</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.DueDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Balance">
+      <th mat-header-cell *matHeaderCellDef>Balance</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.Balance }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="domain">
+      <th mat-header-cell *matHeaderCellDef>Domain</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.domain }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="sparse">
+      <th mat-header-cell *matHeaderCellDef>Sparse</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.sparse }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="SyncToken">
+      <th mat-header-cell *matHeaderCellDef>Sync Token</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.SyncToken }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="MetaData">
+      <th mat-header-cell *matHeaderCellDef>Create Time</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.MetaData.CreateTime }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="TxnDate">
+      <th mat-header-cell *matHeaderCellDef>Txn Date</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.TxnDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="CurrencyRef">
+      <th mat-header-cell *matHeaderCellDef>Currency</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.CurrencyRef.name }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="TotalAmt">
+      <th mat-header-cell *matHeaderCellDef>Total Amount</th>
+      <td mat-cell *matCellDef="let bill">{{ bill.TotalAmt }}</td>
+    </ng-container>
+
+    <!-- Add more column definitions as needed -->
+
+    <!-- Set up table rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>

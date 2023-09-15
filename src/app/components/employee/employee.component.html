@@ -1,0 +1,53 @@
+<div *ngIf="isLoading" class="loading-indicator">
+  <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+  <p>Loading...</p>
+</div>
+<div *ngIf="!isLoading">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Column definitions -->
+    <ng-container matColumnDef="Id">
+      <th mat-header-cell *matHeaderCellDef>ID</th>
+      <td mat-cell *matCellDef="let employee">{{ employee.Id }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="GivenName">
+      <th mat-header-cell *matHeaderCellDef>Given Name</th>
+      <td mat-cell *matCellDef="let employee">{{ employee.GivenName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="FamilyName">
+      <th mat-header-cell *matHeaderCellDef>Family Name</th>
+      <td mat-cell *matCellDef="let employee">{{ employee.FamilyName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="DisplayName">
+      <th mat-header-cell *matHeaderCellDef>Display Name</th>
+      <td mat-cell *matCellDef="let employee">{{ employee.DisplayName }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="Active">
+      <th mat-header-cell *matHeaderCellDef>Active</th>
+      <td mat-cell *matCellDef="let employee">{{ employee.Active }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="MetaData">
+      <th mat-header-cell *matHeaderCellDef>Create Time</th>
+      <td mat-cell *matCellDef="let employee">
+        {{ employee.MetaData?.CreateTime }}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="sparse">
+      <th mat-header-cell *matHeaderCellDef>Sparse</th>
+      <td mat-cell *matCellDef="let employee">
+        {{ employee.sparse }}
+      </td>
+    </ng-container>
+
+    <!-- Add more column definitions as needed -->
+
+    <!-- Set up table rows -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
